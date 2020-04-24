@@ -22,6 +22,14 @@
             cursor: pointer;
         }
 
+        #centerPagesIncrease {
+            margin-right: 4px;
+        }
+
+        #centerPagesDecrease {
+            margin-left: 4px;
+        }
+
         button:hover {
             box-shadow: inset 0px 0px 5px 0px gray;
         }
@@ -49,6 +57,10 @@
             height: 36px;
         }
 
+        .padding-container, .align-container {
+            font-size: 0;
+        }
+
         .align-container, label {
             height: 36px;
         }
@@ -59,7 +71,7 @@
     </style>
 </head>
 <body>
-<div>
+<div class="padding-container">
     <button id="centerPagesIncrease" title="Increase spacing">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
             <rect x="20" y="40" width="60" height="20" fill="grey" />
