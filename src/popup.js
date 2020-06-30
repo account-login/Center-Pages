@@ -19,11 +19,14 @@ function sendMsg(msg, cb) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  var presetButton = document.getElementById('btn-preset');
   var increaseButton = document.getElementById('centerPagesIncrease');
   var decreaseButton = document.getElementById('centerPagesDecrease');
   var radioBoxes = document.querySelectorAll("input[name='centerPagesAlign']");
   var lineHeightBox = document.getElementById('lineHeight');
   var fontSizeBox = document.getElementById('fontSize');
+  // TODO: configurable
+  var preset = { padding: 425, align: 'left', lineHeight: 1.4 };
 
   // default values
   lineHeightBox.value = 1.2;
@@ -42,6 +45,17 @@ document.addEventListener('DOMContentLoaded', function () {
     lineHeightBox.value = parseFloat(response.lineHeight) || lineHeightBox.value;
     fontSizeBox.value = parseFloat(response.fontSize) || fontSizeBox.value;
   });
+
+  // preset button
+  presetButton.addEventListener('click', function () {
+    sendMsg({ query: true }, function (response) {
+      sendMsg({
+          padding: preset.padding - response.padding,
+          align: preset.align,
+          lineHeight: preset.lineHeight,
+      }, null);
+    }, null);
+  }, false);
 
   // increase/decrease button event
   increaseButton.addEventListener('click', function () {
